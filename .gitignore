@@ -1,0 +1,6 @@
+.metadata/
+SE.01/HelloWorld/.classpath
+SE.01/HelloWorld/.project
+SE.01/HelloWorld/.settings/org.eclipse.jdt.core.prefs
+SE.01/HelloWorld/.settings/org.eclipse.m2e.core.prefs
+target/
