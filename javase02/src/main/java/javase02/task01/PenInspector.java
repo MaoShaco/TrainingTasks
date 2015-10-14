@@ -13,6 +13,7 @@ public class PenInspector {
 
     public static void main(String[] args) {
         Pen a = new Pen(CaseMaterial.Metal, RodColor.Black);
-        System.out.println(a.toString());
+        Pen b = new Pen(CaseMaterial.Plastic, RodColor.Black);
+        System.out.println(a.equals(b));
     }
 }

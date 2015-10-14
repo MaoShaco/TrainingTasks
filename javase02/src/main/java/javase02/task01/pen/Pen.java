@@ -21,18 +21,22 @@ public class Pen {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pen)) return false;
+
+        Pen pen = (Pen) o;
+
+        if (penCase != null ? !penCase.equals(pen.penCase) : pen.penCase != null) return false;
+        return !(rod != null ? !rod.equals(pen.rod) : pen.rod != null);
+
+    }
+
+    @Override
     public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+        int result = penCase != null ? penCase.hashCode() : 0;
+        result = 31 * result + (rod != null ? rod.hashCode() : 0);
+        return result;
     }
 }
 
@@ -46,6 +50,22 @@ class PenCase {
     public PenCase(CaseMaterial caseMaterial) {
         this.CaseMaterial = caseMaterial;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PenCase)) return false;
+
+        PenCase penCase = (PenCase) o;
+
+        return CaseMaterial == penCase.CaseMaterial;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return CaseMaterial != null ? CaseMaterial.hashCode() : 0;
+    }
 }
 
 class Rod {
@@ -57,5 +77,21 @@ class Rod {
 
     public Rod(RodColor rodColor) {
         this.rodColor = rodColor;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Rod)) return false;
+
+        Rod rod = (Rod) o;
+
+        return rodColor == rod.rodColor;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return rodColor != null ? rodColor.hashCode() : 0;
     }
 }
