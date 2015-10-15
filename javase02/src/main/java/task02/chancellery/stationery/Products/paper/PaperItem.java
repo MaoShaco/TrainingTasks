@@ -1,4 +1,4 @@
-package task02.chancellery.stationery.Products.paper;
+package task02.chancellery.stationery.products.paper;
 
 import task02.chancellery.stationery.StationeryItem;
 

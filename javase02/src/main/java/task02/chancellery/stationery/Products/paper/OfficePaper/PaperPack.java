@@ -1,8 +1,7 @@
-package task02.chancellery.stationery.Products.paper.OfficePaper;
+package task02.chancellery.stationery.products.paper.officePaper;
 
-import task02.chancellery.stationery.Products.paper.PaperItem;
-
-import javax.swing.*;
+import task02.chancellery.stationery.products.paper.PaperFormat;
+import task02.chancellery.stationery.products.paper.PaperItem;
 
 /**
  * Created by Mao Shaco on 10/15/2015.
@@ -10,7 +9,6 @@ import javax.swing.*;
 public class PaperPack extends PaperItem {
 
     private PaperFormat paperFormat;
-
     private int count;
 
     public PaperPack(String producer, double cost, double paperDensity, PaperFormat paperFormat, int count) {
@@ -28,36 +26,18 @@ public class PaperPack extends PaperItem {
         return paperFormat;
     }
 
-    public PaperPack takeSheets(int count) {
-        if (count < 1 && count > this.count)
+    public double getLength() {
+        return this.paperFormat.getLength();
+    }
+
+    public double getWidth() {
+        return this.paperFormat.getWidth();
+    }
+
+    public PaperPack getSheets(int count) {
+        if (count < 1 || count > this.count)
             throw new IllegalArgumentException();
         this.count -= count;
         return new PaperPack(getProducer(), getCost(), getPaperDensity(), getPaperFormat(), count);
-    }
-
-    private class Converter {
-        Sizes getFormatSizes(PaperFormat paperFormat) {
-
-            switch (paperFormat) {
-                case A2:
-                    return new Sizes(594, 420);
-                case A4:
-                    return new Sizes(297, 210);
-                default:
-                    return new Sizes(297, 210);
-            }
-
-        }
-    }
-
-    private class Sizes {
-
-        private double length;
-        private double width;
-
-        public Sizes(double length, double width) {
-            this.length = length;
-            this.width = width;
-        }
     }
 }

@@ -5,8 +5,6 @@ package task02.chancellery.stationery;
  */
 public abstract class StationeryItem {
 
-
-
     private String producer;
     private double cost;
 
