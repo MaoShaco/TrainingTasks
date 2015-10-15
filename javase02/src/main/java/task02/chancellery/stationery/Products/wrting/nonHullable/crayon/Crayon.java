@@ -1,8 +1,7 @@
 package task02.chancellery.stationery.products.wrting.nonHullable.crayon;
 
+import task02.chancellery.stationery.products.wrting.WritingColor;
 import task02.chancellery.stationery.products.wrting.WritingItem;
-
-import java.awt.*;
 
 /**
  * Created by Mao Shaco on 10/15/2015.
@@ -10,7 +9,12 @@ import java.awt.*;
 public class Crayon extends WritingItem {
     private String[] possibleSurfaces;
 
-    public Crayon(String producer, double cost, Color color, String[] possibleSurface) {
+    public Crayon() {
+        super();
+        this.possibleSurfaces = new String[]{"Board", "Wall"};
+    }
+
+    public Crayon(String producer, double cost, WritingColor color, String[] possibleSurface) {
         super(producer, cost, color);
         this.possibleSurfaces = possibleSurface;
     }

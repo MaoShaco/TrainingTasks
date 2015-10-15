@@ -13,6 +13,11 @@ public abstract class PaperItem extends StationeryItem {
         return paperDensity;
     }
 
+    public PaperItem() {
+        super();
+        this.paperDensity = 80;
+    }
+
     public PaperItem(String producer, double cost, double paperDensity) {
         super(producer, cost);
         this.paperDensity = paperDensity;

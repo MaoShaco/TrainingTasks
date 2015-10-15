@@ -2,22 +2,29 @@ package task02.chancellery.stationery.products.wrting;
 
 import task02.chancellery.stationery.StationeryItem;
 
-import java.awt.*;
+import java.io.PrintStream;
 
 /**
  * Created by Mao Shaco on 10/15/2015.
  */
 public abstract class WritingItem extends StationeryItem {
 
-    private Color color;
+    private WritingColor color;
 
-    public Color getColor() {
+    public WritingColor getColor() {
         return color;
     }
+    public WritingItem(){
+        super();
+        this.color = WritingColor.BLUE;
+    }
 
-    public WritingItem(String producer, double cost, Color color) {
+    public WritingItem(String producer, double cost, WritingColor color) {
         super(producer, cost);
         this.color = color;
     }
 
+    public void writeString(String string, PrintStream outputStream) {
+        outputStream.println(getColor().getAnsiColor() + string + WritingColor.RESET.getAnsiColor());
+    }
 }

@@ -8,6 +8,11 @@ import task02.chancellery.stationery.products.paper.PaperItem;
 public class Convert extends PaperItem {
     private ConvertFormat convertFormat;
 
+    public Convert() {
+        super();
+        this.convertFormat = ConvertFormat.C3;
+    }
+
     public Convert(String producer, double cost, double paperDensity, ConvertFormat convertFormat) {
         super(producer, cost, paperDensity);
         this.convertFormat = convertFormat;

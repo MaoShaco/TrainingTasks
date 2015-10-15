@@ -11,6 +11,12 @@ public class PaperPack extends PaperItem {
     private PaperFormat paperFormat;
     private int count;
 
+    public PaperPack() {
+        super();
+        this.paperFormat = PaperFormat.A4;
+        this.count = 500;
+    }
+
     public PaperPack(String producer, double cost, double paperDensity, PaperFormat paperFormat, int count) {
         super(producer, cost, paperDensity);
         this.paperFormat = paperFormat;

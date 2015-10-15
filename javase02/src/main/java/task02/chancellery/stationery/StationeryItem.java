@@ -8,11 +8,10 @@ public abstract class StationeryItem {
     private String producer;
     private double cost;
 
-    public StationeryItem() {
-        this.producer = "";
+    public StationeryItem(){
+        this.producer = "DefaultProducer";
         this.cost = 0;
     }
-
     public StationeryItem(String producer, double cost) {
         this.producer = producer;
         this.cost = cost;
