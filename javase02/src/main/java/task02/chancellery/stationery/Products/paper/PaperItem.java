@@ -22,5 +22,11 @@ public abstract class PaperItem extends StationeryItem {
         super(producer, cost);
         this.paperDensity = paperDensity;
     }
+
+    @Override
+    public String toString() {
+        return "paperDensity=" + paperDensity +
+                super.toString();
+    }
 }
 

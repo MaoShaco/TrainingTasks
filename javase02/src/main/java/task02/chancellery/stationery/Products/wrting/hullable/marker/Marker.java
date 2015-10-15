@@ -10,12 +10,20 @@ import task02.chancellery.stationery.products.wrting.hullable.WritingHull;
 public class Marker extends WritingHull {
     private String markerType;
 
-    public Marker(){
+    public Marker() {
         super();
         this.markerType = "For metal";
     }
+
     public Marker(String producer, double cost, WritingColor color, HullMaterial hullMaterial, String markerType) {
         super(producer, cost, color, hullMaterial);
         this.markerType = markerType;
+    }
+
+    @Override
+    public String toString() {
+        return "Marker{" +
+                "markerType='" + markerType + '\'' +
+                super.toString();
     }
 }

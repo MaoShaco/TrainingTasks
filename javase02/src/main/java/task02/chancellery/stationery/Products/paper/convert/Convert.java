@@ -29,4 +29,11 @@ public class Convert extends PaperItem {
     public double getWidth() {
         return this.convertFormat.getWidth();
     }
+
+    @Override
+    public String toString() {
+        return "Convert{" +
+                "convertFormat=" + convertFormat +
+                super.toString();
+    }
 }

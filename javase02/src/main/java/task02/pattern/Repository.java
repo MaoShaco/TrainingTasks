@@ -1,7 +1,8 @@
-package task02.chancellery.pattern;
+package task02.pattern;
 
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Queue;
 import java.util.Vector;
 
 /**
@@ -33,8 +34,13 @@ public class Repository<Type> {
     public Type get(int id) {
         return this.Collection.get(id);
     }
+
     public Type get(Type object) {
         return get(this.Collection.indexOf(object));
+    }
+
+    public List<Type> getAll() {
+        return this.Collection;
     }
 
     public void edit(int id, Modifier modifier) {

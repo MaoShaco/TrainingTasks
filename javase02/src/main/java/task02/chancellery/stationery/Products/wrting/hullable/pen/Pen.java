@@ -19,4 +19,11 @@ public class Pen extends WritingHull {
         super(producer, cost, color, hullMaterial);
         this.penMechanism = penMechanism;
     }
+
+    @Override
+    public String toString() {
+        return "Pen{" +
+                "penMechanism=" + penMechanism + '\'' +
+                super.toString();
+    }
 }

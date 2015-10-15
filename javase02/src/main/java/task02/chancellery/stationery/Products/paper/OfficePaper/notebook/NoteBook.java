@@ -29,4 +29,12 @@ public class NoteBook extends PaperPack {
     public NotebookType getNotebookType() {
         return notebookType;
     }
+
+    @Override
+    public String toString() {
+        return "NoteBook{" +
+                "signature='" + signature + '\'' +
+                ", notebookType=" + notebookType +
+                super.toString();
+    }
 }

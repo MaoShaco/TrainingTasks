@@ -14,7 +14,8 @@ public abstract class WritingItem extends StationeryItem {
     public WritingColor getColor() {
         return color;
     }
-    public WritingItem(){
+
+    public WritingItem() {
         super();
         this.color = WritingColor.BLUE;
     }
@@ -26,5 +27,11 @@ public abstract class WritingItem extends StationeryItem {
 
     public void writeString(String string, PrintStream outputStream) {
         outputStream.println(getColor().getAnsiColor() + string + WritingColor.RESET.getAnsiColor());
+    }
+
+    @Override
+    public String toString() {
+        return "color=" + color + '\'' +
+                super.toString();
     }
 }

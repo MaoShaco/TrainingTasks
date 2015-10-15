@@ -21,4 +21,12 @@ public class Eraser extends StationeryItem {
     public double getRigidity() {
         return Rigidity;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Eraser{" +
+                "Rigidity=" + Rigidity +
+                '}';
+    }
 }

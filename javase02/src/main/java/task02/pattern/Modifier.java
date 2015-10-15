@@ -1,4 +1,4 @@
-package task02.chancellery.pattern;
+package task02.pattern;
 
 /**
  * Created by Mao Shaco on 10/15/2015.

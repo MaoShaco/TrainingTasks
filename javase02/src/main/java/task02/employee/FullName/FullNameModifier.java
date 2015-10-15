@@ -1,6 +1,6 @@
-package task02.chancellery.employee.FullName;
+package task02.employee.FullName;
 
-import task02.chancellery.pattern.Modifier;
+import task02.pattern.Modifier;
 
 /**
  * Created by Mao Shaco on 10/15/2015.

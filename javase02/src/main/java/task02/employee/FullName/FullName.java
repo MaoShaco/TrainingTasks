@@ -1,4 +1,4 @@
-package task02.chancellery.employee.FullName;
+package task02.employee.FullName;
 
 /**
  * Created by Mao Shaco on 10/15/2015.
@@ -7,6 +7,11 @@ public class FullName {
     private String name;
     private String surName;
 
+
+    public FullName() {
+        this.name = "Ivan";
+        this.surName = "Ivanov";
+    }
 
     public FullName(String name, String surName) {
         this.name = name;
@@ -20,6 +25,14 @@ public class FullName {
     public String getSurName() {
 
         return surName;
+    }
+
+    @Override
+    public String toString() {
+        return "FullName{" +
+                "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                '}';
     }
 
     @Override

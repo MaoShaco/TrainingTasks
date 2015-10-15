@@ -45,4 +45,12 @@ public class PaperPack extends PaperItem {
         this.count -= count;
         return new PaperPack(getProducer(), getCost(), getPaperDensity(), getPaperFormat(), count);
     }
+
+    @Override
+    public String toString() {
+        return "PaperPack{" +
+                "paperFormat=" + paperFormat +
+                ", count=" + count +
+                super.toString();
+    }
 }

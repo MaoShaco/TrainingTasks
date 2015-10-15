@@ -8,10 +8,11 @@ public abstract class StationeryItem {
     private String producer;
     private double cost;
 
-    public StationeryItem(){
+    public StationeryItem() {
         this.producer = "DefaultProducer";
         this.cost = 0;
     }
+
     public StationeryItem(String producer, double cost) {
         this.producer = producer;
         this.cost = cost;
@@ -23,6 +24,13 @@ public abstract class StationeryItem {
 
     public double getCost() {
         return cost;
+    }
+
+    @Override
+    public String toString() {
+        return "producer='" + producer + '\'' +
+                ", cost=" + cost +
+                '}';
     }
 
     @Override

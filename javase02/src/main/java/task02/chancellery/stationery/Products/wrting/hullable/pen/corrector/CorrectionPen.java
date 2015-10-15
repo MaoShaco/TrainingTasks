@@ -11,10 +11,17 @@ import task02.chancellery.stationery.products.wrting.hullable.pen.PenMechanism;
  */
 public class CorrectionPen extends Pen {
 
-    public CorrectionPen(){
+    public CorrectionPen() {
         super("DefaultProducer", 0, WritingColor.WHITE, HullMaterial.Plastic, PenMechanism.Static);
     }
+
     public CorrectionPen(String producer, double cost) {
         super(producer, cost, WritingColor.WHITE, HullMaterial.Plastic, PenMechanism.Static);
+    }
+
+    @Override
+    public String toString() {
+        return "Correction" +
+                super.toString();
     }
 }
