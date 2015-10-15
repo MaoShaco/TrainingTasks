@@ -1,17 +1,17 @@
-package task02.chancellery.stationery.products.paper;
+package task02.chancellery.stationery.products.paper.convert;
 
 /**
  * Created by Mao Shaco on 10/15/2015.
  */
-public enum PaperFormat {
-    A5(210, 148),
-    A4(297, 210),
-    A2(594, 420);
+public enum ConvertFormat {
+    C5(162, 229),
+    C4(229, 324),
+    C3(324, 458);
 
     private final double length;
     private final double width;
 
-    PaperFormat(double length, double width) {
+    ConvertFormat(double width, double length) {
         this.length = length;
         this.width = width;
     }

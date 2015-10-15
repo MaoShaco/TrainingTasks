@@ -22,7 +22,6 @@ public class PaperPack extends PaperItem {
     }
 
     public PaperFormat getPaperFormat() {
-
         return paperFormat;
     }
 
