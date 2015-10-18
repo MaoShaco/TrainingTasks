@@ -1,6 +1,7 @@
 package javase02.task02.pattern;
 
 import java.io.PrintStream;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Vector;
 
@@ -54,5 +55,8 @@ public class Repository<Type> {
         for (Type object : Collection) {
             outputStream.println(object.toString());
         }
+    }
+    public void sort(Comparator<Type> comparator){
+        this.Collection.sort(comparator);
     }
 }

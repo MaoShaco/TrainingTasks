@@ -5,6 +5,7 @@ import javase02.task02.pattern.Repository;
 import javase02.task02.chancellery.stationery.StationeryItem;
 
 import java.io.PrintStream;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -47,8 +48,6 @@ public class Employee {
         this(fullName.getName(), fullName.getSurName(), stationeryItems);
     }
 
-
-
     public void addStationeryItem(StationeryItem stationeryItem) {
         this.StationeryRepository.add(stationeryItem);
     }
@@ -71,6 +70,9 @@ public class Employee {
 
     public void showStationeryItems(PrintStream outputStream) {
         this.StationeryRepository.showCollection(outputStream);
+    }
+    public void sortStationeryItems(Comparator<StationeryItem> comparator){
+        this.StationeryRepository.sort(comparator);
     }
 
     @Override
