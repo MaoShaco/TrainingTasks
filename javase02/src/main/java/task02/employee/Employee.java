@@ -13,6 +13,11 @@ import java.util.List;
 public class Employee {
 
     private FullName fullName;
+
+    public List<StationeryItem> getStationeryRepository() {
+        return StationeryRepository.getAll();
+    }
+
     private Repository<StationeryItem> StationeryRepository;
 
 
@@ -30,14 +35,19 @@ public class Employee {
         this.fullName = new FullName(name, surName);
     }
 
+    public Employee(FullName fullName) {
+        this(fullName.getName(), fullName.getSurName());
+    }
+
     public Employee(String name, String surName, List<StationeryItem> stationeryItems) {
         this(name, surName);
         this.StationeryRepository = new Repository<StationeryItem>(stationeryItems);
     }
-
-    public Employee(FullName fullName) {
-        this(fullName.getName(), fullName.getSurName());
+    public Employee(FullName fullName, List<StationeryItem> stationeryItems) {
+        this(fullName.getName(), fullName.getSurName(), stationeryItems);
     }
+
+
 
     public void addStationeryItem(StationeryItem stationeryItem) {
         this.StationeryRepository.add(stationeryItem);

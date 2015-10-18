@@ -13,6 +13,7 @@ public class Repository<Type> {
     public Repository() {
         Collection = new Vector<Type>();
     }
+
     public Repository(List<Type> collection) {
         Collection = collection;
     }
@@ -42,7 +43,7 @@ public class Repository<Type> {
     }
 
     public void edit(int id, Modifier modifier) {
-        modifier.modify(get(id));
+        this.Collection.set(id, (Type) modifier.modify(get(id)));
     }
 
     public void edit(Type object, Modifier modifier) {
