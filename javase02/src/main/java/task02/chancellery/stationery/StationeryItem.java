@@ -5,33 +5,30 @@ package task02.chancellery.stationery;
  */
 public abstract class StationeryItem {
 
-    private String producer;
+    private String name;
     private double cost;
+    private int amount;
 
-    public StationeryItem() {
-        this.producer = "DefaultProducer";
-        this.cost = 0;
+    public int getAmount() {
+        return amount;
     }
 
-    public StationeryItem(String producer, double cost) {
-        this.producer = producer;
+    public StationeryItem(String name, double cost, int amount) {
+        this.name = name;
         this.cost = cost;
+        this.amount = amount;
     }
 
-    public String getProducer() {
-        return producer;
+    public String getName() {
+        return name;
     }
 
-    public double getCost() {
+    public double getCostPerItem() {
         return cost;
     }
 
     @Override
-    public String toString() {
-        return "producer='" + producer + '\'' +
-                ", cost=" + cost +
-                '}';
-    }
+    public abstract String toString();
 
     @Override
     public boolean equals(Object o) {
@@ -41,7 +38,7 @@ public abstract class StationeryItem {
         StationeryItem that = (StationeryItem) o;
 
         if (Double.compare(that.cost, cost) != 0) return false;
-        return !(producer != null ? !producer.equals(that.producer) : that.producer != null);
+        return !(name != null ? !name.equals(that.name) : that.name != null);
 
     }
 
@@ -49,7 +46,7 @@ public abstract class StationeryItem {
     public int hashCode() {
         int result;
         long temp;
-        result = producer != null ? producer.hashCode() : 0;
+        result = name != null ? name.hashCode() : 0;
         temp = Double.doubleToLongBits(cost);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;

@@ -11,13 +11,11 @@ public class NoteBook extends PaperPack {
     private NotebookType notebookType;
 
     public NoteBook() {
-        super();
-        this.signature = "<EPAM>";
-        this.notebookType = NotebookType.Cell;
+        this("NoteBook", 20, 2, 80, PaperFormat.A5, 48, "<EPAM>", NotebookType.Cell);
     }
 
-    public NoteBook(String producer, double cost, double paperDensity, PaperFormat paperFormat, int count, String signature, NotebookType notebookType) {
-        super(producer, cost, paperDensity, paperFormat, count);
+    public NoteBook(String name, double cost, int amount, double paperDensity, PaperFormat paperFormat, int count, String signature, NotebookType notebookType) {
+        super(name, cost, amount, paperDensity, paperFormat, count);
         this.signature = signature;
         this.notebookType = notebookType;
     }
@@ -32,9 +30,14 @@ public class NoteBook extends PaperPack {
 
     @Override
     public String toString() {
-        return "NoteBook{" +
-                "signature='" + signature + '\'' +
-                ", notebookType=" + notebookType +
-                super.toString();
+        return getName() +
+                "{ cost = " + getCostPerItem() +
+                ", amount = " + getAmount() +
+                ", paperDensity = " + getPaperDensity() +
+                ", paperFormat = " + getPaperFormat() +
+                ", countSheets = " + getCount() +
+                ", signature = " + getSignature() +
+                ", noteBookType = " + getNotebookType() +
+                " }";
     }
 }

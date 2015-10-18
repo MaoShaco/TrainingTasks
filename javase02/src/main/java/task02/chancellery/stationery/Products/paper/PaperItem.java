@@ -13,20 +13,9 @@ public abstract class PaperItem extends StationeryItem {
         return paperDensity;
     }
 
-    public PaperItem() {
-        super();
-        this.paperDensity = 80;
-    }
-
-    public PaperItem(String producer, double cost, double paperDensity) {
-        super(producer, cost);
+    public PaperItem(String producer, double cost, int amount, double paperDensity) {
+        super(producer, cost, amount);
         this.paperDensity = paperDensity;
-    }
-
-    @Override
-    public String toString() {
-        return "paperDensity=" + paperDensity +
-                super.toString();
     }
 }
 

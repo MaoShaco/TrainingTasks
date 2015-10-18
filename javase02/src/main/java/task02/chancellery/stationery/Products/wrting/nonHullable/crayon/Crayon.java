@@ -9,23 +9,29 @@ import java.util.Arrays;
  * Created by Mao Shaco on 10/15/2015.
  */
 public class Crayon extends WritingItem {
+    public String[] getPossibleSurfaces() {
+        return possibleSurfaces;
+    }
+
     private String[] possibleSurfaces;
 
     public Crayon() {
-        super();
-        this.possibleSurfaces = new String[]{"Board", "Wall"};
+        this("Crayon", 30.5, 1, WritingColor.WHITE, new String[]{"Board", "Wall"});
     }
 
-    public Crayon(String producer, double cost, WritingColor color, String[] possibleSurface) {
-        super(producer, cost, color);
+    public Crayon(String name, double cost, int amount, WritingColor color, String[] possibleSurface) {
+        super(name, cost, amount, color);
         this.possibleSurfaces = possibleSurface;
     }
 
     @Override
     public String toString() {
-        return super.toString() +
-                "Crayon{" +
-                "possibleSurfaces=" + Arrays.toString(possibleSurfaces) +
-                super.toString();
+        return getName() +
+                "{ cost = " + getCostPerItem() +
+                ", amount = " + getAmount() +
+                ", color = " + getColor() +
+                ", possibleSurfaces = " + Arrays.toString(getPossibleSurfaces()) +
+                " }";
     }
+
 }

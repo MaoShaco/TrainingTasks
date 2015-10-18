@@ -2,7 +2,6 @@ package task02.pattern;
 
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Queue;
 import java.util.Vector;
 
 /**
@@ -14,7 +13,6 @@ public class Repository<Type> {
     public Repository() {
         Collection = new Vector<Type>();
     }
-
     public Repository(List<Type> collection) {
         Collection = collection;
     }

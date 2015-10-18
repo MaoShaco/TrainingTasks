@@ -15,23 +15,12 @@ public abstract class WritingItem extends StationeryItem {
         return color;
     }
 
-    public WritingItem() {
-        super();
-        this.color = WritingColor.BLUE;
-    }
-
-    public WritingItem(String producer, double cost, WritingColor color) {
-        super(producer, cost);
+    public WritingItem(String name, double cost, int amount, WritingColor color) {
+        super(name, cost, amount);
         this.color = color;
     }
 
     public void writeString(String string, PrintStream outputStream) {
         outputStream.println(getColor().getAnsiColor() + string + WritingColor.RESET.getAnsiColor());
-    }
-
-    @Override
-    public String toString() {
-        return "color=" + color + '\'' +
-                super.toString();
     }
 }

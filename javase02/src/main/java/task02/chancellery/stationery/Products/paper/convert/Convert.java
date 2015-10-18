@@ -6,19 +6,19 @@ import task02.chancellery.stationery.products.paper.PaperItem;
  * Created by Mao Shaco on 10/15/2015.
  */
 public class Convert extends PaperItem {
+
     private ConvertFormat convertFormat;
 
     public Convert() {
-        super();
-        this.convertFormat = ConvertFormat.C3;
+        this("Convert", 10, 1, 80, ConvertFormat.C3);
     }
 
-    public Convert(String producer, double cost, double paperDensity, ConvertFormat convertFormat) {
-        super(producer, cost, paperDensity);
+    public Convert(String name, double cost, int amount, double paperDensity, ConvertFormat convertFormat) {
+        super(name, cost, amount, paperDensity);
         this.convertFormat = convertFormat;
     }
 
-    public ConvertFormat getPaperFormat() {
+    public ConvertFormat getConvertFormat() {
         return convertFormat;
     }
 
@@ -32,8 +32,11 @@ public class Convert extends PaperItem {
 
     @Override
     public String toString() {
-        return "Convert{" +
-                "convertFormat=" + convertFormat +
-                super.toString();
+        return getName() +
+                "{ cost = " + getCostPerItem() +
+                ", amount = " + getAmount() +
+                ", paperDensity = " + getPaperDensity() +
+                ", convertFormat = " + getConvertFormat() +
+                " }";
     }
 }

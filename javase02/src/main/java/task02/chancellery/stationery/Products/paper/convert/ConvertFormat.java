@@ -1,5 +1,7 @@
 package task02.chancellery.stationery.products.paper.convert;
 
+import task02.chancellery.stationery.products.paper.PaperFormat;
+
 /**
  * Created by Mao Shaco on 10/15/2015.
  */

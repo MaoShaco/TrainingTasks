@@ -12,13 +12,11 @@ public class PaperPack extends PaperItem {
     private int count;
 
     public PaperPack() {
-        super();
-        this.paperFormat = PaperFormat.A4;
-        this.count = 500;
+        this("Paper Pack", 200, 1, 80, PaperFormat.A4, 500);
     }
 
-    public PaperPack(String producer, double cost, double paperDensity, PaperFormat paperFormat, int count) {
-        super(producer, cost, paperDensity);
+    public PaperPack(String name, double cost, int amount, double paperDensity, PaperFormat paperFormat, int count) {
+        super(name, cost, amount, paperDensity);
         this.paperFormat = paperFormat;
         this.count = count;
     }
@@ -43,14 +41,17 @@ public class PaperPack extends PaperItem {
         if (count < 1 || count > this.count)
             throw new IllegalArgumentException();
         this.count -= count;
-        return new PaperPack(getProducer(), getCost(), getPaperDensity(), getPaperFormat(), count);
+        return new PaperPack(getName(), getCostPerItem(), 1, getPaperDensity(), getPaperFormat(), count);
     }
 
     @Override
     public String toString() {
-        return "PaperPack{" +
-                "paperFormat=" + paperFormat +
-                ", count=" + count +
-                super.toString();
+        return getName() +
+                "{ cost = " + getCostPerItem() +
+                ", amount = " + getAmount() +
+                ", paperDensity = " + getPaperDensity() +
+                ", paperFormat = " + getPaperFormat() +
+                ", countSheets = " + getCount() +
+                " }";
     }
 }

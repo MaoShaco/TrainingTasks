@@ -5,6 +5,7 @@ import task02.pattern.Repository;
 import task02.chancellery.stationery.StationeryItem;
 
 import java.io.PrintStream;
+import java.util.List;
 
 /**
  * Created by Mao Shaco on 10/15/2015.
@@ -14,6 +15,11 @@ public class Employee {
     private FullName fullName;
     private Repository<StationeryItem> StationeryRepository;
 
+
+    public FullName getFullName() {
+        return fullName;
+    }
+
     public Employee() {
         this.fullName = new FullName();
         StationeryRepository = new Repository();
@@ -22,6 +28,11 @@ public class Employee {
     public Employee(String name, String surName) {
         this();
         this.fullName = new FullName(name, surName);
+    }
+
+    public Employee(String name, String surName, List<StationeryItem> stationeryItems) {
+        this(name, surName);
+        this.StationeryRepository = new Repository<StationeryItem>(stationeryItems);
     }
 
     public Employee(FullName fullName) {
@@ -54,8 +65,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "fullName=" + fullName +
+        return "Employee {" +
+                getFullName() +
                 '}';
     }
+
 }

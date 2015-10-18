@@ -29,9 +29,9 @@ public class FullName {
 
     @Override
     public String toString() {
-        return "FullName{" +
-                "name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
+        return "FullName {" +
+                getName() +
+                " " + getSurName() +
                 '}';
     }
 

@@ -9,12 +9,11 @@ public class Eraser extends StationeryItem {
     private double Rigidity;
 
     public Eraser() {
-        super();
-        this.Rigidity = 0.4;
+        this("Eraser", 15, 1, 0.4);
     }
 
-    public Eraser(String producer, double cost, double rigidity) {
-        super(producer, cost);
+    public Eraser(String producer, double cost, int amount, double rigidity) {
+        super(producer, cost, amount);
         Rigidity = rigidity;
     }
 
@@ -24,9 +23,10 @@ public class Eraser extends StationeryItem {
 
     @Override
     public String toString() {
-        return super.toString() +
-                "Eraser{" +
-                "Rigidity=" + Rigidity +
-                '}';
+        return getName() +
+                "{ cost = " + getCostPerItem() +
+                ", amount = " + getAmount() +
+                ", rigidity = " + getRigidity() +
+                " }";
     }
 }
