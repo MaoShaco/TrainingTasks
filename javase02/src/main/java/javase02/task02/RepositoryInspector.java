@@ -27,7 +27,7 @@ public class RepositoryInspector {
         Modifier mod = new FullNameModifier(new FullName("Lesha", "Krikov"));
         theTeam.edit(0, mod);
         StationeryComparator stationeryComparator = new StationeryNameCostComparator();
-        theTeam.get(0).sortStationeryItems(stationeryComparator);
+        theTeam.get(0).getStationeryItemRepository().sort(stationeryComparator);
         theTeam.showCollection(System.out);
         theTeam.get(0).showStationeryItems(System.out);
     }

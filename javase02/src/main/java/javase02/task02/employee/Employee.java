@@ -3,6 +3,7 @@ package javase02.task02.employee;
 import javase02.task02.employee.FullName.FullName;
 import javase02.task02.pattern.Repository;
 import javase02.task02.chancellery.stationery.StationeryItem;
+import javase02.task05.education.positinons.Person;
 
 import java.io.PrintStream;
 import java.util.Comparator;
@@ -11,29 +12,26 @@ import java.util.List;
 /**
  * Created by Mao Shaco on 10/15/2015.
  */
-public class Employee {
+public class Employee extends Person {
 
-    private FullName fullName;
+    private Repository<StationeryItem> stationeryItemRepository;
 
-    public List<StationeryItem> getStationeryRepository() {
-        return StationeryRepository.getAll();
-    }
-
-    private Repository<StationeryItem> StationeryRepository;
-
-
-    public FullName getFullName() {
-        return fullName;
+    public List<StationeryItem> getStationeryItemRepository() {
+        return stationeryItemRepository.getAll();
     }
 
     public Employee() {
-        this.fullName = new FullName();
-        StationeryRepository = new Repository();
+        stationeryItemRepository = new Repository<StationeryItem>();
+    }
+
+    public Employee(List<StationeryItem> stationeryItems) {
+        super();
+        stationeryItemRepository = new Repository<StationeryItem>(stationeryItems);
     }
 
     public Employee(String name, String surName) {
-        this();
-        this.fullName = new FullName(name, surName);
+        super(name, surName);
+        stationeryItemRepository = new Repository<StationeryItem>();
     }
 
     public Employee(FullName fullName) {
@@ -42,38 +40,45 @@ public class Employee {
 
     public Employee(String name, String surName, List<StationeryItem> stationeryItems) {
         this(name, surName);
-        this.StationeryRepository = new Repository<StationeryItem>(stationeryItems);
+        this.stationeryItemRepository = new Repository<StationeryItem>(stationeryItems);
     }
+
     public Employee(FullName fullName, List<StationeryItem> stationeryItems) {
         this(fullName.getName(), fullName.getSurName(), stationeryItems);
     }
 
+    public void showStationeryItems(PrintStream outputStream) {
+        this.stationeryItemRepository.showCollection(outputStream);
+    }
+
+/*
     public void addStationeryItem(StationeryItem stationeryItem) {
-        this.StationeryRepository.add(stationeryItem);
+        this.stationeryItemRepository.add(stationeryItem);
     }
 
     public void removeStationeryItem(StationeryItem stationeryItem) {
-        this.StationeryRepository.remove(stationeryItem);
+        this.stationeryItemRepository.remove(stationeryItem);
     }
 
     public void removeStationeryItem(int itemId) {
-        this.StationeryRepository.remove(itemId);
+        this.stationeryItemRepository.remove(itemId);
     }
 
     public StationeryItem getStationeryItem(StationeryItem stationeryItem) {
-        return this.StationeryRepository.get(stationeryItem);
+        return this.stationeryItemRepository.get(stationeryItem);
     }
 
     public StationeryItem getStationeryItem(int itemId) {
-        return this.StationeryRepository.get(itemId);
+        return this.stationeryItemRepository.get(itemId);
     }
 
     public void showStationeryItems(PrintStream outputStream) {
-        this.StationeryRepository.showCollection(outputStream);
+        this.stationeryItemRepository.showCollection(outputStream);
     }
-    public void sortStationeryItems(Comparator<StationeryItem> comparator){
-        this.StationeryRepository.sort(comparator);
-    }
+
+    public void sortStationeryItems(Comparator<StationeryItem> comparator) {
+        this.stationeryItemRepository.sort(comparator);
+    }*/
 
     @Override
     public String toString() {

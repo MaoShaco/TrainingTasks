@@ -44,7 +44,7 @@ public class Repository<Type> {
     }
 
     public void edit(int id, Modifier modifier) {
-        this.Collection.set(id, (Type) modifier.modify(get(id)));
+        modifier.modify(this.Collection.get(id));
     }
 
     public void edit(Type object, Modifier modifier) {

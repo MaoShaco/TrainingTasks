@@ -26,6 +26,10 @@ public class FullName {
 
         return surName;
     }
+    public void rename(String name, String SurName){
+        this.name = name;
+        this.surName = surName;
+    }
 
     @Override
     public String toString() {
