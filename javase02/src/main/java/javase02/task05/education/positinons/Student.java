@@ -31,9 +31,9 @@ public class Student extends Person {
         this.recordBook.put(subject, mark);
     }
 
-    /*public Mark<Number> getSubjectMark(Subject subject) {
+    public Mark<Number> getSubjectMark(Subject subject) {
         return this.recordBook.get(subject);
-    }*/
+    }
 
     @Override
     public String toString() {

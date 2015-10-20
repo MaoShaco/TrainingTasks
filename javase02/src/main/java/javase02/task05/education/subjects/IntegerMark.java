@@ -7,8 +7,4 @@ public class IntegerMark extends Mark<Integer> {
     public IntegerMark(Integer markField) {
         super(markField);
     }
-
-    public IntegerMark(){
-        super(0);
-    }
 }

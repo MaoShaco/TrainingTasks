@@ -1,7 +1,6 @@
 package javase02.task05.education.groups;
 
 import javase02.task05.education.positinons.Student;
-
 import javase02.task05.education.subjects.Mark;
 import javase02.task05.education.subjects.Subject;
 
@@ -15,13 +14,18 @@ public class SubjectGroup<Type extends Mark> {
 
     private Subject subject;
     private Set<Student> studentList;
+    private Class<?> markClass;
 
-    public SubjectGroup(Subject subject) {
+    public SubjectGroup(Subject subject, Class<? extends Mark> markClass) {
+        this.markClass = markClass;
         this.subject = subject;
         this.studentList = new HashSet<Student>();
     }
 
-    public void enrollStudent(Student student, Type mark){
+    public void enrollStudent(Student student, Mark mark){
+        if(!mark.getClass().equals(markClass))
+            throw new ClassCastException();
+
         student.enrollGroup(subject, mark);
         this.studentList.add(student);
     }
