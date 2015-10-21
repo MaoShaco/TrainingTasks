@@ -4,8 +4,7 @@ import javase02.task05.education.positinons.Student;
 import javase02.task05.education.subjects.Mark;
 import javase02.task05.education.subjects.Subject;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Mao Shaco on 10/20/2015.

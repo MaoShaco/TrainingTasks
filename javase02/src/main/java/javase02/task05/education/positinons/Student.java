@@ -1,7 +1,5 @@
 package javase02.task05.education.positinons;
 
-import javase02.task02.employee.FullName.FullName;
-
 import javase02.task05.education.subjects.Mark;
 import javase02.task05.education.subjects.Subject;
 
@@ -14,20 +12,12 @@ public class Student extends Person {
 
     private Map<Subject, Mark> recordBook;
 
-    public Student() {
-    }
-
     public Student(String name, String surName) {
         super(name, surName);
+        this.recordBook = new HashMap<Subject, Mark>();
     }
 
-    public Student(FullName fullName) {
-        super(fullName);
-    }
-
-    public void enrollGroup(Subject subject,  Mark mark) {
-        if (recordBook == null)
-            this.recordBook = new HashMap<Subject, Mark>();
+    public void enrollGroup(Subject subject, Mark mark) {
         this.recordBook.put(subject, mark);
     }
 
@@ -35,10 +25,26 @@ public class Student extends Person {
         return this.recordBook.get(subject);
     }
 
+    private List sortHashMapByValuesD(Map passedMap) {
+
+        List list = new ArrayList(passedMap.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Subject, Mark>>() {
+            public int compare(Map.Entry<Subject, Mark> o1, Map.Entry<Subject, Mark> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        return list;
+    }
+
+    public String getRecordBookFromBest() {
+        return sortHashMapByValuesD(this.recordBook).toString();
+    }
+
     @Override
     public String toString() {
         return "Student {" +
                 getFullName() +
+                getRecordBookFromBest() +
                 '}';
     }
 }

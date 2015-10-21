@@ -26,7 +26,7 @@ public class FullName {
 
         return surName;
     }
-    public void rename(String name, String SurName){
+    public void rename(String name, String surName){
         this.name = name;
         this.surName = surName;
     }
