@@ -10,14 +10,14 @@ import java.util.Set;
 /**
  * Created by Mao Shaco on 10/20/2015.
  */
-public class SubjectGroup<Type extends Mark> {
+public class SubjectGroup {
 
     private Subject subject;
     private Set<Student> studentList;
     private Class<?> markClass;
 
-    public SubjectGroup(Subject subject, Class<? extends Mark> markClass) {
-        this.markClass = markClass;
+    public SubjectGroup(Subject subject) {
+        this.markClass = subject.getMarkClass();
         this.subject = subject;
         this.studentList = new HashSet<Student>();
     }

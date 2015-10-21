@@ -19,8 +19,8 @@ public class StudentGroupInspector {
 
         List<SubjectGroup> ls = new Vector<SubjectGroup>();
 
-        SubjectGroup a = new SubjectGroup(Subject.ideology, new Mark<Long>().getClass());
-        SubjectGroup d = new SubjectGroup(Subject.ideology, DoubleMark.class);
+        SubjectGroup a = new SubjectGroup(Subject.ideology);
+        SubjectGroup d = new SubjectGroup(Subject.ideology);
 
         ls.add(a);
         ls.add(d);
@@ -28,9 +28,10 @@ public class StudentGroupInspector {
         studentRepository.add(new Student("Vadimka", "Gleif"));
         studentRepository.add(new Student("Vadimka", "Drugoi"));
         studentRepository.add(new Student("Vadimka", "Pugaet"));
-        ls.get(0).enrollStudent(studentRepository.get(0), new Mark<Long>(5l));
-        ls.get(0).enrollStudent(studentRepository.get(1), new Mark<Double>(5.7));
-        ls.get(1).enrollStudent(studentRepository.get(2), new DoubleMark(5.5));
+        ls.get(0).enrollStudent(studentRepository.get(0), new DoubleMark(5.0));
+        ls.get(0).enrollStudent(studentRepository.get(0), new IntegerMark(5));
+        ls.get(0).enrollStudent(studentRepository.get(1), new DoubleMark(5.7));
+        //ls.get(1).enrollStudent(studentRepository.get(2), new DoubleMark(5.5));
 
         for (Object student : ls.get(0).getStudentList()) {
             System.out.println(student);
