@@ -2,7 +2,9 @@ package javase03.task01.logger;
 
 import javase03.task01.dataTypes.Log;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,7 +24,10 @@ public class CrazyLogger implements ILogAware {
         this.dataBase.append(newLog.getLogField().toString() + delimiter);
     }
 
-    public Object[] findLogs(Log logInfo) {
+    public void showIntrestedLogs(Log logInfo, PrintStream outStream){
+        System.out.println(Arrays.toString(this.findLogs(logInfo)));
+    }
+    private Object[] findLogs(Log logInfo) {
         rightLogs = new ArrayList<Log>();
         findRecursively(logInfo, 0);
         return rightLogs.toArray();
@@ -38,6 +43,5 @@ public class CrazyLogger implements ILogAware {
             rightLogs.add(new Log<String>(dataBase.substring(start + 1, end)));
             findRecursively(logInfo, end);
         }
-        return;
     }
 }
