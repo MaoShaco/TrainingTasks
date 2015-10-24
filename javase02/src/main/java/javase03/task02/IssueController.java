@@ -15,7 +15,7 @@ public class IssueController {
         this.setupIssues(3);
     }
 
-    public String[] getQuestions(PrintStream outStream) {
+    public String[] getQuestions() {
         String[] questions = new String[issues.size()];
         for(int i = 0; i < issues.size(); i++){
             questions[i] = issues.get(i).question;
@@ -24,12 +24,12 @@ public class IssueController {
     }
 
     public String showAnswer(int questionIndex) {
-        return this.issues.get(questionIndex).answer;
+        return this.issues.get(questionIndex - 1).answer;
     }
 
     private void setupIssues(int amountExistingIssues) {
-        for (int i = 0; i < amountExistingIssues; i++) {
-            this.issues.add(new Issue("Question" + i, "Answer" + i));
+        for (int i = 1; i <= amountExistingIssues; i++) {
+            this.issues.add(new Issue("question" + i, "answer" + i));
         }
     }
 
