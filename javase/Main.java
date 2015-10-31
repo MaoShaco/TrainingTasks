@@ -1,3 +1,4 @@
+Кирилица
 package javase02.task05;
 
 import javase02.task02.employee.FullName.FullName;

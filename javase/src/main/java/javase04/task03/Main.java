@@ -3,7 +3,6 @@ package javase04.task03;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
-import java.nio.charset.Charset;
 
 /**
  * Created by Mao Shaco on 10/31/2015.
@@ -11,13 +10,11 @@ import java.nio.charset.Charset;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        OutputStream ous = new FileOutputStream("UTF8-UTF16.txt");
-        OutputStreamWriter out = new OutputStreamWriter(ous, Charset.forName("UTF-16"));
-
-        Reader in = new FileReader("Main.java");
+        OutputStream out = new FileOutputStream("UTF8-UTF16.txt");
+        InputStream in = new FileInputStream("Main.java");
 
         try {
-            IOUtils.write(IOUtils.toString(in), out);
+            IOUtils.write(IOUtils.toString(in,"UTF-8"), out, "UTF-16");
         } finally {
             IOUtils.closeQuietly(in);
             IOUtils.closeQuietly(out);
