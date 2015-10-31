@@ -1,11 +1,9 @@
 package javase04.task01;
 
-import org.apache.axis2.util.JavaUtils;
+import javase04.task01.util.JavaKeywordDictionary;
 import org.apache.commons.io.IOUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
+import java.io.*;
 
 /**
  * Created by Mao Shaco on 10/31/2015.
@@ -13,13 +11,13 @@ import java.net.URL;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        System.out.println("Hello task 01");
-        InputStream in = new URL( "http://commons.apache.org" ).openStream();
+        OutputStream out = new FileOutputStream("KeyWordsCountStreamLike.txt");
+        InputStream in = new FileInputStream("Main.java");
         try {
-            System.out.println( IOUtils.toString( in ) );
+            IOUtils.write(JavaKeywordDictionary.getKeywordCount(IOUtils.toString(in)).toString(), out);
         } finally {
             IOUtils.closeQuietly(in);
+            IOUtils.closeQuietly(out);
         }
-        System.out.println(JavaUtils.isJavaKeyword("true1"));
     }
 }
