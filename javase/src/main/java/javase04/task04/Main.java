@@ -5,6 +5,8 @@ package javase04.task04;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello task 04");
+ConsoleInterface a = new ConsoleInterface();
+        a.run(System.out);
     }
+
 }
