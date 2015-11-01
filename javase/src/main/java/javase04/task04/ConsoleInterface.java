@@ -154,13 +154,22 @@ public class ConsoleInterface {
     private void deserializeApplicationData() {
         ObjectInputStream ois;
         try {
-            ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("actors")));
+            /*ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("actors")));
             actorRepository = (Repository) ois.readObject();
             ois.close();
+
             ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("movies")));
             movieList = (Repository) ois.readObject();
-            ois.close();
-        } catch (IOException | ClassNotFoundException e) {
+            ois.close();*/
+
+            BufferedReader br = new BufferedReader(new FileReader("actors.json"));
+            actorRepository = gson.fromJson(br, Repository.class);
+            br.close();
+            br = new BufferedReader(new FileReader("movies.json"));
+            movieList = gson.fromJson(br, Repository.class);
+            br.close();
+
+        } catch (IOException e/* | ClassNotFoundException e*/) {
             actorRepository = new Repository<Actor>();
             movieList = new Repository<Movie>();
         }
@@ -168,13 +177,21 @@ public class ConsoleInterface {
 
 
     private void serializeApplicationData() throws IOException {
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("actors"));
+       /* ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("actors"));
         oos.writeObject(actorRepository);
         oos.close();
+
         oos = new ObjectOutputStream(new FileOutputStream("movies"));
         oos.writeObject(movieList);
-        oos.close();
+        oos.close();*/
 
+        FileWriter writer = new FileWriter("actors.json");
+        writer.write(gson.toJson(actorRepository));
+        writer.close();
+
+        writer = new FileWriter("movies.json");
+        writer.write(gson.toJson(movieList));
+        writer.close();
     }
 
     private void addNewMovie(PrintStream out, Scanner in) {
