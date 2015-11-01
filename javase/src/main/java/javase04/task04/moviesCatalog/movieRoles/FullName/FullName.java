@@ -1,17 +1,15 @@
 package javase04.task04.moviesCatalog.movieRoles.FullName;
 
+import java.io.Serializable;
+
 /**
  * Created by Mao Shaco on 10/15/2015.
  */
-public class FullName {
+public class FullName implements Serializable {
     private String name;
     private String surName;
 
-
-    public FullName() {
-        this.name = "Ivan";
-        this.surName = "Ivanov";
-    }
+    public FullName(){}
 
     public FullName(String name, String surName) {
         this.name = name;

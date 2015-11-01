@@ -8,15 +8,14 @@ import java.io.Serializable;
  * Created by Mao Shaco on 11/1/2015.
  */
 public class Actor extends Person implements Serializable {
-    public Actor() {
-        this.fullName = new FullName();
-    }
 
+    public Actor(){}
     public Actor(String name, String surName) {
-        this.fullName = new FullName(name, surName);
+        super(name, surName);
     }
 
-    public Actor(FullName fullName) {
-        this(fullName.getName(), fullName.getSurName());
+    @Override
+    public String toString() {
+        return this.fullName.toString();
     }
 }
