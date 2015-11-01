@@ -9,11 +9,11 @@ import java.util.Map;
  * Created by Mao Shaco on 10/31/2015.
  */
 public class JavaKeywordDictionary {
-    protected static String delims = " ";                                  // "[\\s;.,:'!?()]";
+    protected static String delims = "\\p{Punct}|\\p{Space}";
 
     public static Map<String, Integer> getKeywordCount(String text) {
 
-        Map<String, Integer> keyCountDictionary = new HashMap<String, Integer>();
+        Map<String, Integer> keyCountDictionary = new HashMap<>();
         String[] subStrings = text.split(delims);
         for (String str : subStrings) {
             if (keyCountDictionary.containsKey(str))
