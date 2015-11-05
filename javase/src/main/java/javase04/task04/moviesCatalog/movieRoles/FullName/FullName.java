@@ -31,10 +31,10 @@ public class FullName implements Serializable {
 
     @Override
     public String toString() {
-        return "FullName {" +
-                getName() +
-                " " + getSurName() +
-                '}';
+        return "{fullName={" +
+                "name=" + name +
+                ", surName=" + surName +
+                "}}";
     }
 
     @Override

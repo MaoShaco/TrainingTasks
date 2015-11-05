@@ -82,7 +82,7 @@ public class ConsoleInterface {
             movieList.remove(Integer.parseInt(in.nextLine()));
 
             out.println("Movie removed successfully");
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException | NumberFormatException e) {
             out.println("Wrong input for this list");
         }
     }
@@ -99,7 +99,7 @@ public class ConsoleInterface {
             movie.getActorList().remove(actor);
 
             out.println("Actor removed from the movie successfully");
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException | NumberFormatException e) {
             out.println("Wrong input for this list");
         }
     }

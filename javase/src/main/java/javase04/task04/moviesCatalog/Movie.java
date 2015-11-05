@@ -40,7 +40,7 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return "Movie{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", year=" + year +
                 ", country='" + country + '\'' +
