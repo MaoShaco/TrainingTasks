@@ -66,9 +66,9 @@ public class ConsoleInterface {
                     System.out.println(String.format("'%s' is not recognized as command", buff));
 
             } catch (RuntimeException e) {
-                System.out.println("Something goes wrong in operation with files\nReason: " + e.getLocalizedMessage());
+                System.out.println("Something goes wrong in operation with files\nReason: " + e.getMessage());
             } catch (Exception e) {
-                System.out.println("Something goes wrong critical exception\nReason: " + e.getLocalizedMessage());
+                System.out.println("Something goes wrong critical exception\nReason: " + e.getMessage());
             }
         }
     }

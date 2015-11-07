@@ -100,7 +100,7 @@ public class FileManager {
             return String.format("Text appended to the file <%s>", fileName);
 
         } catch (IOException e) {
-            return String.format("Text not appended to the file <%s>\nReason: %s", fileName, e.getLocalizedMessage());
+            return String.format("Text not appended to the file <%s>\nReason: %s", fileName, e.getMessage());
         }
     }
 
@@ -116,7 +116,7 @@ public class FileManager {
             return String.format("File/Directory <%s> do not exist", file.getName());
 
         } catch (IOException e) {
-            return String.format("File/Directory <%s> not deleted\nReason: %s", file.getName(), e.getLocalizedMessage());
+            return String.format("File/Directory <%s> not deleted\nReason: %s", file.getName(), e.getMessage());
         }
     }
 
@@ -131,7 +131,7 @@ public class FileManager {
         try (InputStream in = new FileInputStream(path)) {
             return IOUtils.toString(in);
         } catch (IOException e) {
-            return String.format("Cannot read <%s>\nReason: %s", fileName, e.getLocalizedMessage());
+            return String.format("Cannot read <%s>\nReason: %s", fileName, e.getMessage());
         }
     }
 
