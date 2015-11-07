@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ConsoleInterface a = new ConsoleInterface();
-        a.run();
+        ConsoleInterface consoleInterface = new ConsoleInterface();
+        consoleInterface.run();
     }
 }
