@@ -15,7 +15,5 @@ public class Main {
         System.out.println(propsReader.getValue("superKey"));
         System.out.println(propsReader.getValue("key"));
         System.out.println(propsReader.getValue("megaKey"));
-
-
     }
 }
