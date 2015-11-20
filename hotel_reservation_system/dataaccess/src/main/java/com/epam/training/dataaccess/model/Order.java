@@ -7,8 +7,8 @@ import java.util.Date;
  */
 public class Order extends AbstractDataObject {
     private Room room;
-    private InOutDate inOutDate;
-    private Expense expense;
+    private Long inOutDateId;
+    private Long expenseId;
     private Date orderDate;
 
     public Room getRoom() {
@@ -19,20 +19,20 @@ public class Order extends AbstractDataObject {
         this.room = room;
     }
 
-    public InOutDate getInOutDate() {
-        return inOutDate;
+    public Long getInOutDateId() {
+        return inOutDateId;
     }
 
-    public void setInOutDate(InOutDate inOutDate) {
-        this.inOutDate = inOutDate;
+    public void setInOutDateId(Long inOutDateId) {
+        this.inOutDateId = inOutDateId;
     }
 
-    public Expense getExpense() {
-        return expense;
+    public Long getExpenseId() {
+        return expenseId;
     }
 
-    public void setExpense(Expense expense) {
-        this.expense = expense;
+    public void setExpenseId(Long expenseId) {
+        this.expenseId = expenseId;
     }
 
     public Date getDate() {

@@ -20,16 +20,16 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void insert(User user) {
-		user.setId(ID_GEN++);
-		TABLE_USER.put(user.getId(), user);
+	public void insert(User obj) {
+		obj.setId(ID_GEN++);
+		TABLE_USER.put(obj.getId(), obj);
 	}
 
 	@Override
-	public void update(User user) {
-		User existingUser = TABLE_USER.get(user.getId());
-		existingUser.setFirstName(user.getFirstName());
-		existingUser.setLastName(user.getLastName());
+	public void update(User obj) {
+		User existingUser = TABLE_USER.get(obj.getId());
+		existingUser.setFirstName(obj.getFirstName());
+		existingUser.setLastName(obj.getLastName());
 	}
 
 }

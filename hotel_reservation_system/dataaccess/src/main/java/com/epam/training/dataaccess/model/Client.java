@@ -6,7 +6,7 @@ package com.epam.training.dataaccess.model;
 public class Client extends AbstractDataObject {
 
     private String clientName;
-    private ClientInfo clientInfo;
+    private Long clientInfoId;
 
     public String getClientName() {
         return clientName;
@@ -16,12 +16,12 @@ public class Client extends AbstractDataObject {
         this.clientName = clientName;
     }
 
-    public ClientInfo getClientInfo() {
-        return clientInfo;
+    public Long getClientInfoId() {
+        return clientInfoId;
     }
 
-    public void setClientInfo(ClientInfo clientInfo) {
-        this.clientInfo = clientInfo;
+    public void setClientInfoId(Long clientInfoId) {
+        this.clientInfoId = clientInfoId;
     }
 }
 

@@ -9,7 +9,7 @@ public interface AbstractDao<T extends AbstractDataObject> {
 
     T getById(Long id);
 
-    void insert(T user);
+    void insert(T obj);
 
-    void update(T user);
+    void update(T obj);
 }

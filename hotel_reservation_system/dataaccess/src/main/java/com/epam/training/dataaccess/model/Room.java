@@ -6,33 +6,33 @@ import java.math.BigDecimal;
  * Created by Mao Shaco on 11/19/2015.
  */
 public class Room extends AbstractDataObject {
-    private BedsType bedsType;
-    private RoomClass roomClass;
-    private RoomInfo roomInfo;
+    private Long bedsTypeId;
+    private Long roomClassId;
+    private Long roomInfoId;
     private BigDecimal costPerDay;
 
-    public BedsType getBedsType() {
-        return bedsType;
+    public Long getBedsTypeId() {
+        return bedsTypeId;
     }
 
-    public void setBedsType(BedsType bedsType) {
-        this.bedsType = bedsType;
+    public void setBedsTypeId(Long bedsTypeId) {
+        this.bedsTypeId = bedsTypeId;
     }
 
-    public RoomClass getRoomClass() {
-        return roomClass;
+    public Long getRoomClassId() {
+        return roomClassId;
     }
 
-    public void setRoomClass(RoomClass roomClass) {
-        this.roomClass = roomClass;
+    public void setRoomClassId(Long roomClassId) {
+        this.roomClassId = roomClassId;
     }
 
-    public RoomInfo getRoomInfo() {
-        return roomInfo;
+    public Long getRoomInfoId() {
+        return roomInfoId;
     }
 
-    public void setRoomInfoID(RoomInfo roomInfo) {
-        this.roomInfo = roomInfo;
+    public void setRoomInfoID(Long roomInfo) {
+        this.roomInfoId = roomInfo;
     }
 
     public BigDecimal getCostPerDay() {
