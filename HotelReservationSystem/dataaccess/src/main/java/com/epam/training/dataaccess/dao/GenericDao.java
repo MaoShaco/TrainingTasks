@@ -11,5 +11,5 @@ public interface GenericDao<T extends AbstractDataObject> {
 
     void insert(T obj);
 
-//    void update(T obj);
+    void update(Long id, T entity);
 }

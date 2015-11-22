@@ -9,4 +9,6 @@ public interface ClientService {
     void registerClient(String name, Long clientInfoId);
 
     Client get(Long id) throws InstantiationException, IllegalAccessException;
+
+    public void updateClient(Long id, Client client);
 }

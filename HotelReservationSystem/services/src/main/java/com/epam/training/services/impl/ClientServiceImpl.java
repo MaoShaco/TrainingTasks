@@ -18,6 +18,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void registerClient(String name, Long clientInfoId) {
         Client client = new Client();
+
         client.setClientInfoId(clientInfoId);
         client.setClientName(name);
         clientDao.insert(client);
@@ -27,4 +28,10 @@ public class ClientServiceImpl implements ClientService {
     public Client get(Long id) throws InstantiationException, IllegalAccessException {
         return clientDao.getById(id);
     }
+
+    @Override
+    public void updateClient(Long id, Client client) {
+        clientDao.update(id, client);
+    }
+
 }

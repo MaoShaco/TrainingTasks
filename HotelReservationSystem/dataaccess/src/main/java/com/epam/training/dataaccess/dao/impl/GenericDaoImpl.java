@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,7 +16,6 @@ import java.util.Map;
  */
 public abstract class GenericDaoImpl<T extends AbstractDataObject> implements GenericDao<T> {
 
-    //protected RowMapper<T> genericRowMapper;
     protected String tableName;
     protected Class<T> typeClass;
 
@@ -33,17 +33,7 @@ public abstract class GenericDaoImpl<T extends AbstractDataObject> implements Ge
                 new Object[]{entityId}, new BeanPropertyRowMapper<>(typeClass));
     }
 
-    /*@Override
-    public T getById(Long id) {
-        return jdbcTemplate.queryForObject(String.format("select * from %s where id = ?", tableName),
-                new Object[]{id}, genericRowMapper);
-    }*/
-
-   /* @Override
-    public void insert(T obj) {
-        Object[] objectInDB = paramsGets(obj);
-        jdbcTemplate.update(getSqlForInsert(), objectInDB);
-    }*/
+    protected abstract Map<String, Object> getParametersForInsert(T entity);
 
     @Override
     public void insert(T entity) {
@@ -52,10 +42,13 @@ public abstract class GenericDaoImpl<T extends AbstractDataObject> implements Ge
         jdbcInsert.execute(new MapSqlParameterSource(getParametersForInsert(entity)));
     }
 
-    protected abstract Map<String, Object> getParametersForInsert(T entity);
-
-    //protected abstract String getSqlForInsert();
-
-    //protected abstract Object[] paramsGets(T obj);
-
+    @Override
+    public void update(Long id, T entity){
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        jdbcTemplate.update(String.format("delete from %s where id = ?", tableName), id);
+        Map<String, Object> mapParameters = new HashMap<>(getParametersForInsert(entity));
+        mapParameters.put("id", id);
+        jdbcInsert.withTableName(tableName);
+        jdbcInsert.execute(new MapSqlParameterSource(mapParameters));
+    }
 }

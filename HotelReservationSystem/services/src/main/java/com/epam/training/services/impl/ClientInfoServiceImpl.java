@@ -18,6 +18,7 @@ public class ClientInfoServiceImpl implements ClientInfoService {
     @Override
     public void registerClient(String creditCardNumber) {
         ClientInfo client = new ClientInfo();
+
         client.setCreditCardNumber(creditCardNumber);
         clientInfoDao.insert(client);
     }
