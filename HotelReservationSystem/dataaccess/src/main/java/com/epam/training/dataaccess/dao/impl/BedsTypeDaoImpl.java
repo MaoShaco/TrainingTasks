@@ -3,6 +3,8 @@ package com.epam.training.dataaccess.dao.impl;
 import com.epam.training.dataaccess.model.BedsType;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
@@ -14,6 +16,11 @@ public class BedsTypeDaoImpl extends GenericDaoImpl<BedsType> {
     }
 
     @Override
+    protected Map<String, Object> getParametersForInsert(BedsType entity) {
+        return null;
+    }
+
+   /* @Override
     protected String getSqlForInsert() {
         return String.format("INSERT INTO %s (beds_type) VALUES (?)", tableName);
     }
@@ -21,5 +28,5 @@ public class BedsTypeDaoImpl extends GenericDaoImpl<BedsType> {
     @Override
     public Object[] paramsGets(BedsType obj) {
         return new Object[]{obj.getType()};
-    }
+    }*/
 }

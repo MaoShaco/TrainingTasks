@@ -3,6 +3,8 @@ package com.epam.training.dataaccess.dao.impl;
 import com.epam.training.dataaccess.model.Expense;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
@@ -14,6 +16,11 @@ public class ExpenseDaoImpl extends GenericDaoImpl<Expense> {
     }
 
     @Override
+    protected Map<String, Object> getParametersForInsert(Expense entity) {
+        return null;
+    }
+
+    /*@Override
     protected String getSqlForInsert() {
         return String.format("INSERT INTO %s (total_expense) VALUES (?)", tableName);
     }
@@ -21,5 +28,5 @@ public class ExpenseDaoImpl extends GenericDaoImpl<Expense> {
     @Override
     public Object[] paramsGets(Expense obj) {
         return new Object[]{obj.getTotalExpense()};
-    }
+    }*/
 }

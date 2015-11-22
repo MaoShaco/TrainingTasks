@@ -5,14 +5,17 @@ import com.epam.training.dataaccess.model.AbstractDataObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+
+import java.util.Map;
 
 /**
  * Created by Mao Shaco on 11/21/2015.
  */
 public abstract class GenericDaoImpl<T extends AbstractDataObject> implements GenericDao<T> {
 
-    protected RowMapper<T> genericRowMapper;
+    //protected RowMapper<T> genericRowMapper;
     protected String tableName;
     protected Class<T> typeClass;
 
@@ -36,23 +39,23 @@ public abstract class GenericDaoImpl<T extends AbstractDataObject> implements Ge
                 new Object[]{id}, genericRowMapper);
     }*/
 
-    @Override
+   /* @Override
     public void insert(T obj) {
         Object[] objectInDB = paramsGets(obj);
         jdbcTemplate.update(getSqlForInsert(), objectInDB);
-    }
+    }*/
 
-   /* @Override
+    @Override
     public void insert(T entity) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         jdbcInsert.withTableName(tableName).usingGeneratedKeyColumns("id");
-        jdbcInsert.execute(new MapSqlParameterSource(getParametersForInsert()));
-    }*/
+        jdbcInsert.execute(new MapSqlParameterSource(getParametersForInsert(entity)));
+    }
 
-    //protected abstract Map<String, Object> getParametersForInsert();
+    protected abstract Map<String, Object> getParametersForInsert(T entity);
 
-    protected abstract String getSqlForInsert();
+    //protected abstract String getSqlForInsert();
 
-    protected abstract Object[] paramsGets(T obj);
+    //protected abstract Object[] paramsGets(T obj);
 
 }

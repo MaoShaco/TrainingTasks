@@ -3,6 +3,8 @@ package com.epam.training.dataaccess.dao.impl;
 import com.epam.training.dataaccess.model.Order;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
@@ -15,6 +17,11 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> {
     }
 
     @Override
+    protected Map<String, Object> getParametersForInsert(Order entity) {
+        return null;
+    }
+
+   /* @Override
     protected String getSqlForInsert() {
         return String.format("INSERT INTO %s (room_id, in_out_date, expense_id, order_date, client_id) VALUES (?,?,?,?,?)", tableName);
     }
@@ -22,5 +29,5 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> {
     @Override
     public Object[] paramsGets(Order obj) {
         return new Object[]{obj.getRoomId(), obj.getInOutDateId(), obj.getExpenseId(), obj.getOrderDate(), obj.getClientId()};
-    }
+    }*/
 }

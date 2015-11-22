@@ -1,5 +1,6 @@
 package com.epam.training.webapp;
 
+import com.epam.training.services.ClientInfoService;
 import com.epam.training.services.ClientService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -10,12 +11,13 @@ public class UserRegisterPage {
 		ClassPathXmlApplicationContext aContext = new ClassPathXmlApplicationContext(
 				"spring-context.xml");
 
-		//ClientInfoService clientInfoService = aContext.getBean(ClientInfoService.class);
-		//clientInfoService.registerClient("s23565524223");
+		ClientInfoService clientInfoService = aContext.getBean(ClientInfoService.class);
+		clientInfoService.registerClient("23565524223");
+		System.out.println(clientInfoService.get(1l).toString());
 
 		ClientService clientService = aContext.getBean(ClientService.class);
-		//clientService.registerClient("HelloBatman", 2l);
-		System.out.println(clientService.get(9l));
+		clientService.registerClient("HelloBatman", 1l);
+		System.out.println(clientService.get(1l));
 
 	}
 }
