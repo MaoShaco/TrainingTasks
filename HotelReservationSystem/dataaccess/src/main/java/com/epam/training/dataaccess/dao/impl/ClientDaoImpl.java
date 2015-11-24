@@ -2,8 +2,11 @@ package com.epam.training.dataaccess.dao.impl;
 
 import com.epam.training.dataaccess.dao.ClientDao;
 import com.epam.training.dataaccess.model.Client;
+import com.epam.training.dataaccess.model.Room;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,14 +28,12 @@ public class ClientDaoImpl extends GenericDaoImpl<Client> implements ClientDao {
         return parameters;
     }
 
-
-    /*@Override
-    protected String getSqlForInsert() {
-        return String.format("INSERT INTO %s (client_name, client_info_id) VALUES (?,?)", tableName);
-    }
-
     @Override
-    public Object[] paramsGets(Client obj) {
-        return new Object[]{obj.getClientName(), obj.getClientInfoId()};
-    }*/
+    public Client FindClientByRoomOnDate(Room interestedRoom, Date interestedDate) {
+        return jdbcTemplate.queryForObject("SELECT * FROM  client WHERE id = " +
+                "(SELECT client_id FROM orders WHERE room_id =? AND in_out_date_id IN " +
+                        "(SELECT id FROM  in_out_date WHERE  entry_date<? AND out_date>?))",
+                new Object[]{interestedRoom.getId(), interestedDate, interestedDate},
+                new BeanPropertyRowMapper<>(Client.class));
+    }
 }

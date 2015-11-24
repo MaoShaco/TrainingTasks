@@ -17,16 +17,6 @@ public class ClientInfoDaoImpl extends GenericDaoImpl<ClientInfo> implements Cli
         super("client_info", ClientInfo.class);
     }
 
-    /*@Override
-    public Object[] paramsGets(ClientInfo obj) {
-        return new Object[]{obj.getCreditCardNumber()};
-    }
-
-    @Override
-    protected String getSqlForInsert() {
-        return String.format("INSERT INTO %s (credit_card_number) VALUES (?)", tableName);
-    }*/
-
     @Override
     protected Map<String, Object> getParametersForInsert(ClientInfo entity) {
         Map<String, Object> parameters = new HashMap<>();

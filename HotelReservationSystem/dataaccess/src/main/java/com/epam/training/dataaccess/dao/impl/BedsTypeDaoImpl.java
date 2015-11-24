@@ -1,15 +1,17 @@
 package com.epam.training.dataaccess.dao.impl;
 
+import com.epam.training.dataaccess.dao.BedsTypeDao;
 import com.epam.training.dataaccess.model.BedsType;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
 @Repository
-public class BedsTypeDaoImpl extends GenericDaoImpl<BedsType> {
+public class BedsTypeDaoImpl extends ExtendedGenericGetAllDaoImpl<BedsType> implements BedsTypeDao {
 
     protected BedsTypeDaoImpl() {
         super("beds_type", BedsType.class);
@@ -17,16 +19,9 @@ public class BedsTypeDaoImpl extends GenericDaoImpl<BedsType> {
 
     @Override
     protected Map<String, Object> getParametersForInsert(BedsType entity) {
-        return null;
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("beds_type", entity.getType());
+        return parameters;
     }
 
-   /* @Override
-    protected String getSqlForInsert() {
-        return String.format("INSERT INTO %s (beds_type) VALUES (?)", tableName);
-    }
-
-    @Override
-    public Object[] paramsGets(BedsType obj) {
-        return new Object[]{obj.getType()};
-    }*/
 }

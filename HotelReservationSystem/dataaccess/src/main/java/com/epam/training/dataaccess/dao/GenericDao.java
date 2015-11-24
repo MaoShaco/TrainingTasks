@@ -9,7 +9,7 @@ public interface GenericDao<T extends AbstractDataObject> {
 
     T getById(Long id) throws IllegalAccessException, InstantiationException;
 
-    void insert(T obj);
+    Long insert(T obj);
 
-    void update(Long id, T entity);
+    void update(T entity);
 }

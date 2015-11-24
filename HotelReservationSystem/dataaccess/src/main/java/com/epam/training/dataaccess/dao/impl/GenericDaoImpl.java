@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -36,19 +36,33 @@ public abstract class GenericDaoImpl<T extends AbstractDataObject> implements Ge
     protected abstract Map<String, Object> getParametersForInsert(T entity);
 
     @Override
-    public void insert(T entity) {
+    public Long insert(T entity) {
         SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         jdbcInsert.withTableName(tableName).usingGeneratedKeyColumns("id");
-        jdbcInsert.execute(new MapSqlParameterSource(getParametersForInsert(entity)));
+        return jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(getParametersForInsert(entity)))
+                .longValue();
     }
 
     @Override
-    public void update(Long id, T entity){
-        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-        jdbcTemplate.update(String.format("delete from %s where id = ?", tableName), id);
-        Map<String, Object> mapParameters = new HashMap<>(getParametersForInsert(entity));
-        mapParameters.put("id", id);
-        jdbcInsert.withTableName(tableName);
-        jdbcInsert.execute(new MapSqlParameterSource(mapParameters));
+    public void update(T entity) {
+        StringBuilder updatingParameters = new StringBuilder();
+
+        Map<String, Object> parametersForInsert = getParametersForInsert(entity);
+        Iterator<Map.Entry<String, Object>> iterator = parametersForInsert.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Object> parameter = iterator.next();
+            if (parameter.getValue() != null) {
+                updatingParameters.append(String.format("%s=?, ", parameter.getKey()));
+            } else {
+                iterator.remove();
+            }
+        }
+        try {
+            updatingParameters.deleteCharAt(updatingParameters.lastIndexOf(","));
+        } catch (StringIndexOutOfBoundsException e) {
+            return;
+        }
+        jdbcTemplate.update(String.format("update %s set %s where id = %s", tableName, updatingParameters, entity.getId()), parametersForInsert.values().toArray());
+
     }
 }

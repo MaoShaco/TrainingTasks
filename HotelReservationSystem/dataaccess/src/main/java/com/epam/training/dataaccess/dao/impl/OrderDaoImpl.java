@@ -1,33 +1,41 @@
 package com.epam.training.dataaccess.dao.impl;
 
+import com.epam.training.dataaccess.dao.OrderDao;
+import com.epam.training.dataaccess.model.Client;
 import com.epam.training.dataaccess.model.Order;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
 @Repository
-public class OrderDaoImpl extends GenericDaoImpl<Order> {
+public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
 
 
     protected OrderDaoImpl() {
-        super("order_table", Order.class);
+        super("orders", Order.class);
     }
 
     @Override
     protected Map<String, Object> getParametersForInsert(Order entity) {
-        return null;
+        entity.setOrderDate(Calendar.getInstance().getTime());
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("room_id", entity.getRoomId());
+        parameters.put("in_out_date_id", entity.getInOutDateId());
+        parameters.put("expense_id", entity.getExpenseId());
+        parameters.put("order_date", entity.getOrderDate());
+        parameters.put("client_id", entity.getClientId());
+        return parameters;
     }
 
-   /* @Override
-    protected String getSqlForInsert() {
-        return String.format("INSERT INTO %s (room_id, in_out_date, expense_id, order_date, client_id) VALUES (?,?,?,?,?)", tableName);
-    }
 
     @Override
-    public Object[] paramsGets(Order obj) {
-        return new Object[]{obj.getRoomId(), obj.getInOutDateId(), obj.getExpenseId(), obj.getOrderDate(), obj.getClientId()};
-    }*/
+    public List<Order> getClientOrders(Client currentClient) {
+        return jdbcTemplate.query("SELECT * FROM orders WHERE client_id = ?",
+                new Object[]{currentClient.getId()},
+                new BeanPropertyRowMapper<>(Order.class));
+    }
 }

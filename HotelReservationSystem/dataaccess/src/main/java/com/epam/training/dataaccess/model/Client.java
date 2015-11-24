@@ -23,5 +23,10 @@ public class Client extends AbstractDataObject {
     public void setClientInfoId(Long clientInfoId) {
         this.clientInfoId = clientInfoId;
     }
+
+    @Override
+    public String toString() {
+        return getClientName() + " " + getClientInfoId().toString();
+    }
 }
 

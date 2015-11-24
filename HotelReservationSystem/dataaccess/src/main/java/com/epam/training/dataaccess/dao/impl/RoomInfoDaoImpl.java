@@ -1,15 +1,17 @@
 package com.epam.training.dataaccess.dao.impl;
 
+import com.epam.training.dataaccess.dao.RoomInfoDao;
 import com.epam.training.dataaccess.model.RoomInfo;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
 @Repository
-public class RoomInfoDaoImpl extends GenericDaoImpl<RoomInfo> {
+public class RoomInfoDaoImpl extends GenericDaoImpl<RoomInfo> implements RoomInfoDao {
 
     protected RoomInfoDaoImpl() {
         super("room_info", RoomInfo.class);
@@ -17,16 +19,8 @@ public class RoomInfoDaoImpl extends GenericDaoImpl<RoomInfo> {
 
     @Override
     protected Map<String, Object> getParametersForInsert(RoomInfo entity) {
-        return null;
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("room_number", entity.getRoomNumber());
+        return parameters;
     }
-
-    /*@Override
-    protected String getSqlForInsert() {
-        return String.format("INSERT INTO %s (room_number) VALUES (?)", tableName);
-    }
-
-    @Override
-    public Object[] paramsGets(RoomInfo obj) {
-        return new Object[]{obj.getRoomNumber()};
-    }*/
 }

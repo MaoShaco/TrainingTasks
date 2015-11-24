@@ -1,15 +1,17 @@
 package com.epam.training.dataaccess.dao.impl;
 
+import com.epam.training.dataaccess.dao.ExpenseDao;
 import com.epam.training.dataaccess.model.Expense;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by Mao Shaco on 11/20/2015.
  */
 @Repository
-public class ExpenseDaoImpl extends GenericDaoImpl<Expense> {
+public class ExpenseDaoImpl extends GenericDaoImpl<Expense> implements ExpenseDao {
 
     protected ExpenseDaoImpl() {
         super("expense", Expense.class);
@@ -17,16 +19,9 @@ public class ExpenseDaoImpl extends GenericDaoImpl<Expense> {
 
     @Override
     protected Map<String, Object> getParametersForInsert(Expense entity) {
-        return null;
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("total_expense", entity.getTotalExpense());
+        return parameters;
     }
 
-    /*@Override
-    protected String getSqlForInsert() {
-        return String.format("INSERT INTO %s (total_expense) VALUES (?)", tableName);
-    }
-
-    @Override
-    public Object[] paramsGets(Expense obj) {
-        return new Object[]{obj.getTotalExpense()};
-    }*/
 }
