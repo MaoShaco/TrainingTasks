@@ -7,6 +7,8 @@ import com.epam.training.services.RoomClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Mao Shaco on 11/24/2015.
  */
@@ -19,5 +21,10 @@ public class RoomClassServiceImpl extends GenericInsertOrUpdateServiceImpl<RoomC
     @Override
     protected GenericDao<RoomClass> getBeanDao() {
         return roomClassDao;
+    }
+
+    @Override
+    public List<RoomClass> getAllRoomClass(){
+        return roomClassDao.getAll();
     }
 }

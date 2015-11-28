@@ -5,5 +5,5 @@ import com.epam.training.dataaccess.model.BedsType;
 /**
  * Created by Mao Shaco on 11/19/2015.
  */
-public interface BedsTypeDao extends GenericDao<BedsType> {
+public interface BedsTypeDao extends ExtendedGenericGetAllDao<BedsType> {
 }

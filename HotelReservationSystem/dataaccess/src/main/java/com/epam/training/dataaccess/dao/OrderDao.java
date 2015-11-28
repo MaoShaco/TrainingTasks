@@ -3,6 +3,7 @@ package com.epam.training.dataaccess.dao;
 import com.epam.training.dataaccess.model.Client;
 import com.epam.training.dataaccess.model.Order;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,4 +11,6 @@ import java.util.List;
  */
 public interface OrderDao extends GenericDao<Order> {
     List<Order> getClientOrders(Client currentClient);
+
+    List<Order> getOrdersOnDate(Date interestedDate);
 }

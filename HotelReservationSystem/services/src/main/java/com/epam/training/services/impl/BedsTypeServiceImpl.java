@@ -7,6 +7,8 @@ import com.epam.training.services.BedsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Mao Shaco on 11/24/2015.
  */
@@ -20,4 +22,10 @@ public class BedsTypeServiceImpl extends GenericInsertOrUpdateServiceImpl<BedsTy
     protected GenericDao<BedsType> getBeanDao() {
         return bedsTypeDao;
     }
+
+    @Override
+    public List<BedsType> getAllBedsTypes(){
+        return bedsTypeDao.getAll();
+    }
+
 }

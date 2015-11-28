@@ -4,9 +4,13 @@ import com.epam.training.dataaccess.dao.ClientDao;
 import com.epam.training.dataaccess.dao.GenericDao;
 import com.epam.training.dataaccess.model.Client;
 import com.epam.training.dataaccess.model.ClientInfo;
+import com.epam.training.dataaccess.model.Room;
 import com.epam.training.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Mao Shaco on 11/21/2015.
@@ -26,11 +30,21 @@ public class ClientServiceImpl extends GenericInsertOrUpdateServiceImpl<Client> 
     public void registerClient(String name, String creditCardNumber) {
         Client client = new Client();
 
-        ClientInfo  clientInfo = new ClientInfo();
+        ClientInfo clientInfo = new ClientInfo();
         clientInfo.setCreditCardNumber(creditCardNumber);
 
         client.setClientInfoId(new ClientInfoServiceImpl().getBeanDao().insert(clientInfo));
         client.setClientName(name);
         clientDao.insert(client);
+    }
+
+    @Override
+    public Client findByRoomAndDate(Room room, Date date) {
+        return clientDao.FindClientByRoomOnDate(room, date);
+    }
+
+    @Override
+    public Client findByRoom(Room room) {
+        return findByRoomAndDate(room, Calendar.getInstance().getTime());
     }
 }

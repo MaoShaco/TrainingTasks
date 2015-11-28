@@ -12,7 +12,7 @@ import java.util.*;
  * Created by Mao Shaco on 11/20/2015.
  */
 @Repository
-public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
+public class OrderDaoImpl extends ExtendedGenericGetAllDaoImpl<Order> implements OrderDao {
 
 
     protected OrderDaoImpl() {
@@ -36,6 +36,14 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
     public List<Order> getClientOrders(Client currentClient) {
         return jdbcTemplate.query("SELECT * FROM orders WHERE client_id = ?",
                 new Object[]{currentClient.getId()},
+                new BeanPropertyRowMapper<>(Order.class));
+    }
+
+    @Override
+    public List<Order> getOrdersOnDate(Date interestedDate) {
+        return jdbcTemplate.query("SELECT * FROM  orders WHERE in_out_date_id IN " +
+                        "(SELECT id FROM  in_out_date WHERE  entry_date<? AND out_date>?)",
+                new Object[]{interestedDate, interestedDate},
                 new BeanPropertyRowMapper<>(Order.class));
     }
 }
