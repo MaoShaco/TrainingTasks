@@ -5,20 +5,20 @@ import java.util.Arrays;
 /**
  * Created by Mao Shaco on 11/29/2015.
  */
-public class NoSuchDataInDao extends Exception {
+public class NoSuchDataInDaoException extends Exception {
     private String interestedData;
     private Object[] parameters;
 
-    public NoSuchDataInDao(){}
+    public NoSuchDataInDaoException(){}
 
-    public NoSuchDataInDao(String interestedData, Object... parameters){
+    public NoSuchDataInDaoException(String interestedData, Object... parameters){
         this.interestedData = interestedData;
         this.parameters = parameters;
     }
 
     @Override
     public String getMessage(){
-        return String.format("There is no %s object with interested parameters: %s", interestedData, Arrays.toString(parameters));
+        return String.format("There is no %s object with interested parameters: %s in dao", interestedData, Arrays.toString(parameters));
     }
 
 }

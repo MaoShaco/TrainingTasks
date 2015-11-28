@@ -7,6 +7,7 @@ import com.epam.training.dataaccess.model.Client;
 import com.epam.training.dataaccess.model.ClientInfo;
 import com.epam.training.dataaccess.model.Room;
 import com.epam.training.services.ClientService;
+import com.epam.training.services.ServicesExceptions.NoSuchDataInDaoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,19 +56,17 @@ public class ClientServiceImpl extends GenericInsertOrUpdateServiceImpl<Client> 
     }
 
     @Override
-    public Client findByRoomAndDate(Room room, Date date) {
+    public Client findByRoomAndDate(Room room, Date date) throws NoSuchDataInDaoException {
         LOGGER.info("Getting client on room: {} at date: {} from dao", room.getId(), date);
-        return clientDao.findClientByRoomOnDate(room, date);
+        try {
+            return clientDao.findClientByRoomOnDate(room, date);
+        } catch (EmptyResultDataAccessException e) {
+            throw new NoSuchDataInDaoException(Client.class.toString(), room, date);
+        }
     }
 
     @Override
-    public Client findByRoom(Room room) {
-try{
-    return findByRoomAndDate(room, Calendar.getInstance().getTime());
-
-}catch(EmptyResultDataAccessException e){
-    throw new
-}
-
+    public Client findByRoom(Room room) throws NoSuchDataInDaoException {
+        return findByRoomAndDate(room, Calendar.getInstance().getTime());
     }
 }

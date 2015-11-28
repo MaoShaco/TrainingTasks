@@ -4,6 +4,7 @@ import com.epam.training.dataaccess.model.Client;
 import com.epam.training.dataaccess.model.Room;
 import com.epam.training.services.ClientService;
 import com.epam.training.services.OrderService;
+import com.epam.training.services.ServicesExceptions.NoSuchDataInDaoException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.util.GregorianCalendar;
 
 public class UserRegisterPage {
 
-    public static void main(String[] args) throws IllegalAccessException, InstantiationException {
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException, NoSuchDataInDaoException {
 
         ClassPathXmlApplicationContext aContext = new ClassPathXmlApplicationContext("spring-context.xml");
 
