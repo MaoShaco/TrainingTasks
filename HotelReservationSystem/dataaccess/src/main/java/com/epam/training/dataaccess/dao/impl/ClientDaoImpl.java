@@ -29,7 +29,7 @@ public class ClientDaoImpl extends GenericDaoImpl<Client> implements ClientDao {
     }
 
     @Override
-    public Client FindClientByRoomOnDate(Room interestedRoom, Date interestedDate) {
+    public Client findClientByRoomOnDate(Room interestedRoom, Date interestedDate) {
         return jdbcTemplate.queryForObject("SELECT * FROM  client WHERE id = " +
                 "(SELECT client_id FROM orders WHERE room_id =? AND in_out_date_id IN " +
                         "(SELECT id FROM  in_out_date WHERE  entry_date<? AND out_date>?))",

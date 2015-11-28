@@ -9,5 +9,5 @@ import java.util.Date;
  * Created by Mao Shaco on 11/19/2015.
  */
 public interface ClientDao extends GenericDao<Client> {
-    Client FindClientByRoomOnDate(Room interestedRoom, Date interestedDate);
+    Client findClientByRoomOnDate(Room interestedRoom, Date interestedDate);
 }

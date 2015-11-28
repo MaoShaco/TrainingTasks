@@ -1,11 +1,17 @@
 package com.epam.training.dataaccess.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
  * Created by Mao Shaco on 11/15/2015.
  */
 public class Order extends AbstractDataObject {
+
+    public Order(){
+        this.setOrderDate(Calendar.getInstance().getTime());
+    }
+
     private Long roomId;
     private Long inOutDateId;
     private Long expenseId;

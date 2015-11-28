@@ -4,6 +4,8 @@ import com.epam.training.dataaccess.dao.BedsTypeDao;
 import com.epam.training.dataaccess.dao.GenericDao;
 import com.epam.training.dataaccess.model.BedsType;
 import com.epam.training.services.BedsTypeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.List;
 @Service
 public class BedsTypeServiceImpl extends GenericInsertOrUpdateServiceImpl<BedsType> implements BedsTypeService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BedsTypeServiceImpl.class);
+
     @Autowired
     private BedsTypeDao bedsTypeDao;
 
@@ -25,6 +29,7 @@ public class BedsTypeServiceImpl extends GenericInsertOrUpdateServiceImpl<BedsTy
 
     @Override
     public List<BedsType> getAllBedsTypes(){
+            LOGGER.info("Looking for all BedsTypes from dao");
         return bedsTypeDao.getAll();
     }
 

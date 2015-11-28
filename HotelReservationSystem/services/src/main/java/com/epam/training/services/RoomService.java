@@ -4,6 +4,7 @@ import com.epam.training.dataaccess.model.BedsType;
 import com.epam.training.dataaccess.model.Room;
 import com.epam.training.dataaccess.model.RoomClass;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import java.util.List;
  */
 public interface RoomService extends GenericInsertOrUpdateService<Room> {
     Room findByRoomNumber(Long roomNumber);
+
+    void registerNewRoom(BigDecimal costPerDay, Long roomNumber, BedsType bedsType, RoomClass roomClass);
 
     List<Room> getFreeRoomsOnDate(Date entryDate, Date outDate, BedsType bedsType, RoomClass roomClass);
 

@@ -36,8 +36,8 @@ public class RoomDaoImpl extends ExtendedGenericGetAllDaoImpl<Room> implements R
     public List<Room> getFreeRoomsOnDate(Date entryDate, Date outDate, BedsType bedsType) {
         return jdbcTemplate.query("SELECT * FROM room WHERE beds_type_id = ? AND id NOT IN " +
                         "(SELECT room_id FROM orders WHERE in_out_date_id IN " +
-                        "(SELECT id FROM in_out_date WHERE entry_date <= ? AND date_out >= ?))",
-                new Object[]{bedsType.getId(), outDate.getTime(), entryDate.getTime()},
+                        "(SELECT id FROM in_out_date WHERE entry_date <= ? AND out_date >= ?))",
+                new Object[]{bedsType.getId(), outDate, entryDate},
                 new BeanPropertyRowMapper<>(Room.class));
     }
 
@@ -45,8 +45,8 @@ public class RoomDaoImpl extends ExtendedGenericGetAllDaoImpl<Room> implements R
     public List<Room> getFreeRoomsOnDate(Date entryDate, Date outDate, RoomClass roomClass, BedsType bedsType) {
         return jdbcTemplate.query("SELECT * FROM room WHERE room_class_id = ? AND beds_type_id = ? AND id NOT IN " +
                         "(SELECT room_id FROM orders WHERE in_out_date_id IN " +
-                        "(SELECT id FROM in_out_date WHERE entry_date <= ? AND date_out >= ?))",
-                new Object[]{roomClass.getId(), bedsType.getId(), outDate.getTime(), entryDate.getTime()},
+                        "(SELECT id FROM in_out_date WHERE entry_date <= ? AND out_date >= ?))",
+                new Object[]{roomClass.getId(), bedsType.getId(), outDate, entryDate},
                 new BeanPropertyRowMapper<>(Room.class));
     }
 
