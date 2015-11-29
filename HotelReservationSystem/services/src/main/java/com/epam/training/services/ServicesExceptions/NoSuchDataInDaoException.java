@@ -9,8 +9,6 @@ public class NoSuchDataInDaoException extends Exception {
     private String interestedData;
     private Object[] parameters;
 
-    public NoSuchDataInDaoException(){}
-
     public NoSuchDataInDaoException(String interestedData, Object... parameters){
         this.interestedData = interestedData;
         this.parameters = parameters;

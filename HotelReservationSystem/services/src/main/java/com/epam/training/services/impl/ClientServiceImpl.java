@@ -61,6 +61,7 @@ public class ClientServiceImpl extends GenericInsertOrUpdateServiceImpl<Client> 
         try {
             return clientDao.findClientByRoomOnDate(room, date);
         } catch (EmptyResultDataAccessException e) {
+            LOGGER.debug("There is no any room with selected params");
             throw new NoSuchDataInDaoException(Client.class.toString(), room, date);
         }
     }

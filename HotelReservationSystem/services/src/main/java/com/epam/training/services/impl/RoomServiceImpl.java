@@ -3,14 +3,13 @@ package com.epam.training.services.impl;
 import com.epam.training.dataaccess.dao.GenericDao;
 import com.epam.training.dataaccess.dao.RoomDao;
 import com.epam.training.dataaccess.dao.RoomInfoDao;
-import com.epam.training.dataaccess.model.BedsType;
-import com.epam.training.dataaccess.model.Room;
-import com.epam.training.dataaccess.model.RoomClass;
-import com.epam.training.dataaccess.model.RoomInfo;
+import com.epam.training.dataaccess.model.*;
 import com.epam.training.services.RoomService;
+import com.epam.training.services.ServicesExceptions.NoSuchDataInDaoException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -37,9 +36,13 @@ public class RoomServiceImpl extends GenericInsertOrUpdateServiceImpl<Room> impl
     }
 
     @Override
-    public Room findByRoomNumber(Long roomNumber) {
+    public Room findByRoomNumber(Long roomNumber) throws NoSuchDataInDaoException {
         LOGGER.info("Getting room by roomNumber: {}", roomNumber);
-        return roomDao.findRoomByNumber(roomNumber);
+        try {
+            return roomDao.findRoomByNumber(roomNumber);
+        }catch(EmptyResultDataAccessException e){
+            throw new NoSuchDataInDaoException(Room.class.toString(), roomNumber);
+        }
     }
 
     @Override
